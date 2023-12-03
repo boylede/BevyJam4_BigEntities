@@ -1,5 +1,5 @@
 [package]
-name = "BevyJam4_BigEntities"
+name = "bevyjam4_big_entities"
 version = "0.1.0"
 publish = false
 authors = ["boylede@gmail.com"]
