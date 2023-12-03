@@ -1,0 +1,48 @@
+[package]
+name = "big_entities_lib"
+version = "0.1.0"
+publish = false
+authors = ["boylede@gmail.com"]
+edition = "2021"
+exclude = ["dist", "build", "assets", "credits"]
+
+[features]
+dev = [
+    "bevy/dynamic_linking",
+]
+
+[dependencies]
+bevy = { version = "0.12", default-features = false, features = [
+    "animation",
+    "bevy_asset",
+    "bevy_gilrs",
+    "bevy_scene",
+    "bevy_winit",
+    "bevy_core_pipeline",
+    "bevy_pbr",
+    "bevy_gltf",
+    "bevy_render",
+    "bevy_sprite",
+    "bevy_text",
+    "bevy_ui",
+    "multi-threaded",
+    "png",
+    "hdr",
+    "x11",
+    "bevy_gizmos",
+    "tonemapping_luts",
+    "default_font",
+    "webgl2",
+] }
+bevy_kira_audio = { version = "0.18" }
+bevy_asset_loader = { version = "0.18" }
+webbrowser = { version = "0.8", features = ["hardened"] }
+rand = "0.8.5"
+smallvec = {version = "1.*", features = ["union", "serde", "const_new", "const_generics"]}
+winit = { version = "0.28.7", default-features = false }
+image = { version = "0.24", default-features = false }
+bevy_common_assets = {version = "0.8.0", features = ["ron"]}
+serde = "1.0"
+
+[build-dependencies]
+embed-resource = "1.4"

@@ -1,0 +1,67 @@
+[package]
+name = "BevyJam4_BigEntities"
+version = "0.1.0"
+publish = false
+authors = ["boylede@gmail.com"]
+edition = "2021"
+exclude = ["dist", "build", "assets", "credits"]
+
+
+[workspace]
+members = ["crates/*"]
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+[features]
+dev = [
+    "bevy/dynamic_linking",
+]
+
+[dependencies]
+bevy = { version = "0.12", default-features = false, features = [
+    "animation",
+    "bevy_asset",
+    "bevy_gilrs",
+    "bevy_scene",
+    "bevy_winit",
+    "bevy_core_pipeline",
+    "bevy_pbr",
+    "bevy_gltf",
+    "bevy_render",
+    "bevy_sprite",
+    "bevy_text",
+    "bevy_ui",
+    "multi-threaded",
+    "png",
+    "hdr",
+    "x11",
+    "bevy_gizmos",
+    "tonemapping_luts",
+    "default_font",
+    "webgl2",
+] }
+bevy_kira_audio = { version = "0.18" }
+bevy_asset_loader = { version = "0.18" }
+webbrowser = { version = "0.8", features = ["hardened"] }
+rand = "0.8.5"
+smallvec = {version = "1.*", features = ["union", "serde", "const_new", "const_generics"]}
+winit = { version = "0.28.7", default-features = false }
+image = { version = "0.24", default-features = false }
+big_entities_lib = {path = "crates/big_entities_lib/"}
+web-sys = "0.3.65"
+
+
+[build-dependencies]
+embed-resource = "1.4"
