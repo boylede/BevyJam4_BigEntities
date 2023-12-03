@@ -12,7 +12,7 @@ const TILE_PATH: &str = "embedded://big_entities_lib/assets/models/AlienCake/til
 const PLAYER_PATH: &str = "embedded://big_entities_lib/assets/models/AlienCake/alien.glb#Scene0";
 const PICKUP_PATH: &str =
     "embedded://big_entities_lib/assets/models/AlienCake/cakeBirthday.glb#Scene0";
-const WORLD_PATH: &str = "embedded://big_entities_lib/assets/worlds/main.world.ron";
+const WORLD_PATH: &str = "worlds/main.world.ron";
 
 /// set up the camera, light, and loading ui's, as well as initiate model asset loading
 pub fn setup_loading(mut commands: Commands, asset_server: Res<AssetServer>) {
