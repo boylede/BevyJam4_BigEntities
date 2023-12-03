@@ -1,6 +1,8 @@
 // disable console on windows for release builds
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+#[cfg(target_arch = "wasm32")]
+use bevy::asset::AssetMetaCheck;
 use bevy::{prelude::*, window::PrimaryWindow, winit::WinitWindows};
 use big_entities_lib::*;
 use std::io::Cursor;
@@ -8,6 +10,12 @@ use winit::window::Icon;
 
 fn main() {
     let mut app = App::new();
+    #[cfg(target_arch = "wasm32")]
+    {
+        info!("Loading wasm32-specific stuff");
+        app.add_systems(Update, handle_browser_resize);
+        app.insert_resource(AssetMetaCheck::Never);
+    }
     app.insert_resource(Msaa::Off)
         .insert_resource(ClearColor(Color::rgb_u8(169, 231, 255))) // rgb(169, 231, 255);
         .add_plugins(DefaultPlugins.set(WindowPlugin {
@@ -25,9 +33,6 @@ fn main() {
         }))
         .add_plugins(GamePlugin)
         .add_systems(Startup, set_window_icon);
-
-    #[cfg(target_arch = "wasm32")]
-    app.add_systems(Update, handle_browser_resize);
 
     app.run();
 }

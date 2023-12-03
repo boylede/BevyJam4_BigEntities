@@ -2,7 +2,7 @@
 use assets::MyEmbeddedAssetsPlugin;
 use bevy::{
     diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin},
-    prelude::*, asset::AssetMetaCheck,
+    prelude::*,
 };
 use bevy_common_assets::ron::RonAssetPlugin;
 use board::Board;
@@ -46,7 +46,6 @@ impl Plugin for GamePlugin {
             RonAssetPlugin::<Board>::new(&["world.ron"]),
         ))
         .add_state::<GameState>()
-        .insert_resource(AssetMetaCheck::Never)
         .add_systems(OnEnter(GameState::Loading), setup_loading)
         .add_systems(Update, (trigger_check, button_clicked))
         .add_systems(OnEnter(GameState::Playing), setup)
