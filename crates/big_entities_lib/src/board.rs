@@ -39,7 +39,7 @@ impl BoardCache {
         let index = (y * self.width) + x;
         self.inner.get(index)
     }
-    pub fn size(&self) -> (usize,usize) {
+    pub fn size(&self) -> (usize, usize) {
         (self.width, self.height)
     }
     /// the height of the tile, or 0.0 if tile not found
@@ -53,8 +53,4 @@ pub struct Tile {
     pub height: f32,
 }
 
-pub const RESET_FOCUS: [f32; 3] = [
-    2.0 as f32 / 2.0,
-    0.0,
-    2.0 as f32 / 2.0 - 0.5,
-];
+pub const RESET_FOCUS: [f32; 3] = [2.0 as f32 / 2.0, 0.0, 2.0 as f32 / 2.0 - 0.5];

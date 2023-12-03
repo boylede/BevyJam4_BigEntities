@@ -1,6 +1,6 @@
 use super::GameState;
 use crate::{
-    board::{BoardCache, BoardPosition, Cell, Tile, Board, },
+    board::{Board, BoardCache, BoardPosition, Cell, Tile},
     pawn::{free_movement::FirstPersonPawn, Player},
     pickup::{spawn_a_pickup, Pickup},
     ui::score::DataDisplay,
@@ -14,7 +14,12 @@ use rand::Rng;
 use std::f32::consts::PI;
 
 /// reset the game to a valid initial state
-pub fn setup(mut commands: Commands, mut game: ResMut<Game>, cameras: Query<Entity, With<Camera>>, boards: Res<Assets<Board>>) {
+pub fn setup(
+    mut commands: Commands,
+    mut game: ResMut<Game>,
+    cameras: Query<Entity, With<Camera>>,
+    boards: Res<Assets<Board>>,
+) {
     game.cake_eaten = 0;
     game.score = 0;
     let Some(board_config) = boards.get(game.world_handle.clone()) else {

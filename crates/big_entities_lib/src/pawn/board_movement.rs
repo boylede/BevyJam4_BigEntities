@@ -1,6 +1,7 @@
 use crate::{
-    board::{BoardCache, BoardPosition, Board,},
-    pawn::third_person::Facing, Game,
+    board::{Board, BoardCache, BoardPosition},
+    pawn::third_person::Facing,
+    Game,
 };
 use bevy::prelude::*;
 use std::f32::consts::PI;

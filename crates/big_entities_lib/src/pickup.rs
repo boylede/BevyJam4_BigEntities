@@ -1,5 +1,5 @@
 use crate::{
-    board::{BoardCache, BoardPosition, Board},
+    board::{Board, BoardCache, BoardPosition},
     pawn::Player,
     Game,
 };
