@@ -8,7 +8,7 @@ pub struct BoardPosition {
 }
 
 #[derive(serde::Deserialize, bevy::asset::Asset, bevy::reflect::TypePath)]
-pub struct Board {
+pub struct WorldConfiguration {
     pub width: usize,
     pub height: usize,
 }
@@ -21,15 +21,15 @@ pub struct Cell {
 
 /// Parent of game board entities
 #[derive(Component)]
-pub struct BoardCache {
+pub struct ChunkData {
     width: usize,
     height: usize,
     inner: Vec<Tile>,
 }
 
-impl BoardCache {
-    pub fn new(width: usize, height: usize, tiles: Vec<Tile>) -> BoardCache {
-        BoardCache {
+impl ChunkData {
+    pub fn new(width: usize, height: usize, tiles: Vec<Tile>) -> ChunkData {
+        ChunkData {
             width,
             height,
             inner: tiles,

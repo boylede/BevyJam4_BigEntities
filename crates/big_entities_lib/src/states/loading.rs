@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 
 use crate::{
-    board::{Board, RESET_FOCUS},
+    chunks::{WorldConfiguration, RESET_FOCUS},
     ui::{Trigger, UiCommand, UiCommands},
     Game,
 };
@@ -40,7 +40,7 @@ pub fn setup_loading(mut commands: Commands, asset_server: Res<AssetServer>) {
     let tile_handle: Handle<Scene> = asset_server.load(TILE_PATH);
     let player_handle: Handle<Scene> = asset_server.load(PLAYER_PATH);
     let pickup_handle: Handle<Scene> = asset_server.load(PICKUP_PATH);
-    let world_handle: Handle<Board> = asset_server.load(WORLD_PATH);
+    let world_handle: Handle<WorldConfiguration> = asset_server.load(WORLD_PATH);
 
     create_ui(
         &mut commands,

@@ -1,5 +1,5 @@
 use super::Player;
-use crate::board::BoardPosition;
+use crate::chunks::BoardPosition;
 use bevy::{input::mouse::MouseMotion, prelude::*};
 use std::f32::consts::PI;
 

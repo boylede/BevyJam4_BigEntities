@@ -1,5 +1,5 @@
 use crate::{
-    board::{Board, BoardCache, BoardPosition},
+    chunks::{WorldConfiguration, ChunkData, BoardPosition},
     pawn::third_person::Facing,
     Game,
 };
@@ -21,9 +21,9 @@ pub fn move_pawn_board_position(
         ),
         With<Player>,
     >,
-    gameboard: Query<&BoardCache>,
+    gameboard: Query<&ChunkData>,
     game: Res<Game>,
-    boards: Res<Assets<Board>>,
+    boards: Res<Assets<WorldConfiguration>>,
 ) {
     let Some(board_config) = boards.get(game.world_handle.clone()) else {
         warn!("expected board config asset to be loaded by now");

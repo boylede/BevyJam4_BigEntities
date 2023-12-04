@@ -1,6 +1,6 @@
 use super::GameState;
 use crate::{
-    board::{Board, BoardCache, BoardPosition, Cell, Tile},
+    chunks::{WorldConfiguration, ChunkData, BoardPosition, Cell, Tile},
     pawn::{free_movement::FirstPersonPawn, Player},
     pickup::{spawn_a_pickup, Pickup},
     ui::score::DataDisplay,
@@ -18,7 +18,7 @@ pub fn setup(
     mut commands: Commands,
     mut game: ResMut<Game>,
     cameras: Query<Entity, With<Camera>>,
-    boards: Res<Assets<Board>>,
+    boards: Res<Assets<WorldConfiguration>>,
 ) {
     game.cake_eaten = 0;
     game.score = 0;
@@ -49,7 +49,7 @@ pub fn setup(
         })
         .collect();
 
-    let board_cache: BoardCache = BoardCache::new(
+    let board_cache: ChunkData = ChunkData::new(
         board_config.width,
         board_config.height,
         board_pieces

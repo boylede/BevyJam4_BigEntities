@@ -5,7 +5,7 @@ use bevy::{
     prelude::*,
 };
 use bevy_common_assets::ron::RonAssetPlugin;
-use board::Board;
+use chunks::WorldConfiguration;
 use pawn::PawnPlugin;
 use pickup::PickupPlugin;
 use states::{
@@ -18,7 +18,7 @@ use states::{
 use ui::{button_clicked, trigger_check, fps::{setup_fps_counter, fps_text_update_system, fps_counter_showhide}};
 
 pub mod assets;
-pub mod board;
+pub mod chunks;
 pub mod pawn;
 pub mod pickup;
 pub mod states;
@@ -30,7 +30,7 @@ pub struct Game {
     player_handle: Handle<Scene>,
     pickup_handle: Handle<Scene>,
     tile_handle: Handle<Scene>,
-    world_handle: Handle<Board>,
+    world_handle: Handle<WorldConfiguration>,
     score: i32,
     cake_eaten: u32,
 }
@@ -43,7 +43,7 @@ impl Plugin for GamePlugin {
             MyEmbeddedAssetsPlugin,
             PawnPlugin,
             PickupPlugin,
-            RonAssetPlugin::<Board>::new(&["world.ron"]),
+            RonAssetPlugin::<WorldConfiguration>::new(&["world.ron"]),
         ))
         .add_state::<GameState>()
         .add_systems(OnEnter(GameState::Loading), setup_loading)

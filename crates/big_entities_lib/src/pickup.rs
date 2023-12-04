@@ -1,5 +1,5 @@
 use crate::{
-    board::{Board, BoardCache, BoardPosition},
+    chunks::{WorldConfiguration, ChunkData, BoardPosition},
     pawn::Player,
     Game,
 };
@@ -74,10 +74,10 @@ pub fn spawn_a_pickup(
 fn respawn_pickups(
     mut commands: Commands,
     game: ResMut<Game>,
-    boards: Res<Assets<Board>>,
+    boards: Res<Assets<WorldConfiguration>>,
     players: Query<&BoardPosition, With<Player>>,
     pickups: Query<(&BoardPosition, Entity), (With<Pickup>, With<Despawn>, With<AutoRespawn>)>,
-    gameboard: Query<&BoardCache>,
+    gameboard: Query<&ChunkData>,
 ) {
     let Some(board_config) = boards.get(game.world_handle.clone()) else {
         warn!("expected board config asset to be loaded by now");
