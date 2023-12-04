@@ -15,7 +15,7 @@ use states::{
     playing::{end_game, enter_menu, setup, teardown, update_scoreboard},
     GameState,
 };
-use ui::{button_clicked, trigger_check};
+use ui::{button_clicked, trigger_check, fps::{setup_fps_counter, fps_text_update_system, fps_counter_showhide}};
 
 pub mod assets;
 pub mod board;
@@ -65,6 +65,9 @@ impl Plugin for GamePlugin {
         #[cfg(debug_assertions)]
         {
             app.add_plugins((FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin::default()));
+            app.add_systems(Startup, setup_fps_counter);
+            app.add_systems(Update, (fps_text_update_system, fps_counter_showhide));
         }
+        
     }
 }

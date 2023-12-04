@@ -11,6 +11,7 @@ use smallvec::SmallVec;
 
 use crate::states::GameState;
 pub mod score;
+pub mod fps;
 
 #[derive(Component)]
 pub struct UiCommands(SmallVec<[UiCommand; 2]>);
